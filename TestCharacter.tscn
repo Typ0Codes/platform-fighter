@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bkhbl3swayk6r"]
+
+[ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_md7x2"]
+[ext_resource type="Script" uid="uid://cjj4sj08dxxdw" path="res://BasicMovement.gd" id="1_roxm0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8aff"]
+
+[node name="Node2D" type="CharacterBody2D" unique_id=497342508]
+script = ExtResource("1_roxm0")
+speed = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1526168878]
+position = Vector2(1.9073486e-06, 0.4999981)
+scale = Vector2(0.15625, 0.24218749)
+texture = ExtResource("1_md7x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1834859636]
+shape = SubResource("CapsuleShape2D_m8aff")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1392182720]
+one_shot = true
