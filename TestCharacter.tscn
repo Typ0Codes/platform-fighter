@@ -1,21 +1,114 @@
 [gd_scene format=3 uid="uid://bkhbl3swayk6r"]
 
-[ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_md7x2"]
 [ext_resource type="Script" uid="uid://cjj4sj08dxxdw" path="res://BasicMovement.gd" id="1_roxm0"]
+[ext_resource type="Texture2D" uid="uid://c1vpw0ngjes0u" path="res://TestFrog.png" id="2_roxm0"]
+[ext_resource type="Script" uid="uid://c6rhe5cx8xr1c" path="res://addons/saltmire_hitbox/hitbox.gd" id="3_p4urp"]
+[ext_resource type="Script" uid="uid://5pnrbdr5b12f" path="res://addons/saltmire_hitbox/hurtbox.gd" id="4_1rt8y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8aff"]
 
-[node name="Node2D" type="CharacterBody2D" unique_id=497342508]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4urp"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rt8y"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w1vm"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70sfp"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wl56"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l74h0"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8aff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4urp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rt8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w1vm")
+}],
+"loop": 0,
+"name": &"kill",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70sfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wl56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l74h0")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_da32h"]
+radius = 11.0
+
+[node name="Player" type="CharacterBody2D" unique_id=497342508]
 script = ExtResource("1_roxm0")
 speed = 300
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1526168878]
-position = Vector2(1.9073486e-06, 0.4999981)
-scale = Vector2(0.15625, 0.24218749)
-texture = ExtResource("1_md7x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1834859636]
 shape = SubResource("CapsuleShape2D_m8aff")
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1392182720]
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=226615512]
+sprite_frames = SubResource("SpriteFrames_m8aff")
+animation = &"kill"
+frame = 1
+frame_progress = 1.0
+
+[node name="Heavy1HitBox" type="Area2D" parent="." unique_id=992443049]
+script = ExtResource("3_p4urp")
+damage = 5.0
+knockback = 10.0
+one_shot = false
+active = false
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heavy1HitBox" unique_id=555717405]
+position = Vector2(14, -5)
+shape = SubResource("CapsuleShape2D_da32h")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="Hurtbox2D" type="Area2D" parent="." unique_id=1674466666]
+script = ExtResource("4_1rt8y")
+metadata/_custom_type_script = "uid://5pnrbdr5b12f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D" unique_id=979294791]
+shape = SubResource("CapsuleShape2D_m8aff")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1521358348]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="hurt" from="Hurtbox2D" to="." method="_on_hurtbox_2d_hurt"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

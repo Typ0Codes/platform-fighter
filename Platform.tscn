@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c7nyxr1fq8r5d"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m8aff"]
+b = Vector2(67, 0)
+
+[node name="Node2D" type="StaticBody2D" unique_id=1496373755]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=929911834]
+shape = SubResource("SegmentShape2D_m8aff")
+one_way_collision = true
