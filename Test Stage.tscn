@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dj1hy5qu3q2el"]
 
+[ext_resource type="Script" uid="uid://uysaxw0vaqqf" path="res://game_manager.gd" id="1_fhxd0"]
 [ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_l365q"]
 [ext_resource type="PackedScene" uid="uid://bkhbl3swayk6r" path="res://TestCharacter.tscn" id="2_gaj55"]
 [ext_resource type="PackedScene" uid="uid://c7nyxr1fq8r5d" path="res://Platform.tscn" id="3_pjvta"]
@@ -8,6 +9,9 @@
 size = Vector2(540, 154.5)
 
 [node name="Node2D" type="Node2D" unique_id=1275020512]
+script = ExtResource("1_fhxd0")
+player_scene = ExtResource("2_gaj55")
+max_players = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
 position = Vector2(597, 592)
@@ -19,14 +23,6 @@ shape = SubResource("RectangleShape2D_m8aff")
 position = Vector2(1.9999847, -0.9999914)
 scale = Vector2(4.328125, 1.2500001)
 texture = ExtResource("1_l365q")
-
-[node name="Player" parent="." unique_id=497342508 instance=ExtResource("2_gaj55")]
-position = Vector2(405, 389)
-
-[node name="Player2" parent="." unique_id=1663160064 instance=ExtResource("2_gaj55")]
-position = Vector2(587, 474)
-team = 2
-dummy = true
 
 [node name="Platform" parent="." unique_id=1496373755 instance=ExtResource("3_pjvta")]
 position = Vector2(384, 461)
@@ -51,3 +47,11 @@ position = Vector2(721, 461)
 position = Vector2(32.5, 0)
 scale = Vector2(0.5078125, 0.0390625)
 texture = ExtResource("1_l365q")
+
+[node name="Label" type="Label" parent="." unique_id=1295053921]
+offset_left = 266.0
+offset_top = 164.0
+offset_right = 916.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 50
+text = "Terra Platform Fighter Test"

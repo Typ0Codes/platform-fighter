@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjj4sj08dxxdw" path="res://BasicMovement.gd" id="1_roxm0"]
 [ext_resource type="Texture2D" uid="uid://c1vpw0ngjes0u" path="res://TestFrog.png" id="2_roxm0"]
+[ext_resource type="Script" uid="uid://dqpkvnosbpdvd" path="res://addons/GD-Sync/Scripts/Types/SynchronizedAnimatedSprite2D.gd" id="3_0w1vm"]
 [ext_resource type="Script" uid="uid://c6rhe5cx8xr1c" path="res://addons/saltmire_hitbox/hitbox.gd" id="3_p4urp"]
 [ext_resource type="Script" uid="uid://5pnrbdr5b12f" path="res://addons/saltmire_hitbox/hurtbox.gd" id="4_1rt8y"]
 
@@ -257,11 +258,13 @@ shape = SubResource("CapsuleShape2D_m8aff")
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1392182720]
 one_shot = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=226615512]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=234752850]
 sprite_frames = SubResource("SpriteFrames_m8aff")
 animation = &"Recovery"
 frame = 4
 frame_progress = 0.4113629
+script = ExtResource("3_0w1vm")
+metadata/_custom_type_script = "uid://dqpkvnosbpdvd"
 
 [node name="Heavy1HitBox" type="Area2D" parent="." unique_id=992443049]
 script = ExtResource("3_p4urp")
