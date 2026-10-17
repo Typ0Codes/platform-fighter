@@ -102,7 +102,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_hurtbox_2d_hurt(damage: float, source: Node, knockback: Vector2) -> void:
-	velocity.y += 10
+	velocity.y = 5
 	velocity += knockback * 500
 	attacked = true
 	await get_tree().create_timer(0.05).timeout  

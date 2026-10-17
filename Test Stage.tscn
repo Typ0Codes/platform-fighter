@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_l365q"]
 [ext_resource type="PackedScene" uid="uid://bkhbl3swayk6r" path="res://TestCharacter.tscn" id="2_gaj55"]
-[ext_resource type="Script" uid="uid://b4av4mudtl4y5" path="res://Dummy.gd" id="3_fhxd0"]
 [ext_resource type="PackedScene" uid="uid://c7nyxr1fq8r5d" path="res://Platform.tscn" id="3_pjvta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8aff"]
@@ -26,9 +25,8 @@ position = Vector2(405, 389)
 
 [node name="Player2" parent="." unique_id=1663160064 instance=ExtResource("2_gaj55")]
 position = Vector2(587, 474)
-script = ExtResource("3_fhxd0")
-speed = 150
 team = 2
+dummy = true
 
 [node name="Platform" parent="." unique_id=1496373755 instance=ExtResource("3_pjvta")]
 position = Vector2(384, 461)
