@@ -11,6 +11,15 @@ the game will work singleplayer but it is not reccomended.
 
 to play online input the same lobby name as your opponent and press play. it will sync the map and other things.
 
+
+# Notable Bugs
+
+Going back to the main menu after a match breaks the play button so you have to restart your game each time
+
+your damage doesnt get reset when you lose a stock
+
+# credits
+
 Music by unreal salsa as per usual (thanks violet :3 )
 
 Enjoy!!
