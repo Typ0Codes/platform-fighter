@@ -16,6 +16,14 @@ extends CharacterBody2D
 @export var dummy = false
 @export var health = 0
 
+@export_group("Knockback")
+@export var kb_scale := 1.5       # multiplies the hitbox's own knockback
+@export var kb_flat := 150.0      # launch speed added even at 0%
+@export var kb_growth := 0.04     # linear gain per % damage
+@export var kb_curve := 0.0004    # extra gain that ramps up at high %
+@export var kb_max := 3000.0      # speed cap
+@export_group("")
+
 
 @export var local_testing = false
 
@@ -291,13 +299,14 @@ func apply_hit(damage: float, knockback: Vector2) -> void:
 	if not _is_authority():
 		return
 
-	var magnitude = knockback.length() * (1.0 + health * 0.05) + 200.0
+	health += damage   # this hit's damage counts toward its own launch
+	var magnitude = _calc_knockback(knockback)
 	velocity = knockback.normalized() * magnitude
 	velocity.y = min(velocity.y, -100)
 
-	health += damage
 	attacked = true
-	$AttackTimer.start()
+	# harder hits = longer stun, so friction doesn't kill the launch early
+	$AttackTimer.start(clamp(magnitude / 2000.0, 0.2, 0.9))
 
 	jabbing = false
 	attackFreeze = false
@@ -307,6 +316,12 @@ func apply_hit(damage: float, knockback: Vector2) -> void:
 	$DSpecialHitBox.deactivate()
 	$RecoveryHitbox.deactivate()
 	$DJabHitBox.deactivate()
+
+
+func _calc_knockback(knockback: Vector2) -> float:
+	var p = health
+	var multiplier = 1.0 + p * kb_growth + p * p * kb_curve
+	return min((knockback.length() * kb_scale + kb_flat) * multiplier, kb_max)
 
 
 func set_facing(dir: float) -> void:

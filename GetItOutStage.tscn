@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://ma4tmuph3jtg"]
+
+[ext_resource type="Script" uid="uid://bpxi3tlm5x3mh" path="res://hallway.gd" id="1_lfkfv"]
+[ext_resource type="Shader" uid="uid://14o65eqv64x2" path="res://GetItOutStage.gdshader" id="2_6axx2"]
+[ext_resource type="Texture2D" uid="uid://docy02j8ifot7" path="res://Ogden Utah Frontrunner Station.jpg" id="3_fvy67"]
+[ext_resource type="FontFile" uid="uid://wcwfmv3f23h2" path="res://Early GameBoy.ttf" id="4_6axx2"]
+[ext_resource type="AudioStream" uid="uid://b51gfnwby26sj" path="res://Collision Vision.ogg" id="5_5iwy6"]
+
+[sub_resource type="Gradient" id="Gradient_fvy67"]
+offsets = PackedFloat32Array(0, 0.20858896, 0.6441718, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.60622764, 1.3957917e-06, 0.21675783, 1, 0.8663055, 0, 0.2559975, 1, 0.8919917, 0.00022563696, 0.7838376, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6axx2"]
+gradient = SubResource("Gradient_fvy67")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfkfv"]
+shader = ExtResource("2_6axx2")
+shader_parameter/screen_height = 640.0
+shader_parameter/amplitude = 0.08
+shader_parameter/frequency = 11.38
+shader_parameter/speed = 2.425
+shader_parameter/amplitude_vertical = 2.425
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = true
+shader_parameter/palette = SubResource("GradientTexture2D_6axx2")
+shader_parameter/palette_speed = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8aff"]
+size = Vector2(808, 223.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaj55"]
+size = Vector2(54, 731)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gaj55"]
+normal = Vector2(0, 1)
+distance = -16.148737
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pjvta"]
+distance = 2.0
+
+[node name="Node2D" type="Node2D" unique_id=1275020512]
+script = ExtResource("1_lfkfv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=685694750]
+offset_right = 1282.0
+offset_bottom = 708.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=297827384]
+material = SubResource("ShaderMaterial_lfkfv")
+position = Vector2(585, 338.00003)
+scale = Vector2(0.37118506, 0.3427867)
+texture = ExtResource("3_fvy67")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
+position = Vector2(597, 592)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912179990]
+position = Vector2(-5, -34.375)
+shape = SubResource("RectangleShape2D_m8aff")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1203435520]
+offset_left = -409.0
+offset_top = -147.0
+offset_right = 403.0
+offset_bottom = 86.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StaticBody2D" unique_id=1225898179]
+offset_left = -394.0
+offset_top = -125.0
+offset_right = 382.0
+offset_bottom = -102.0
+theme_override_fonts/font = ExtResource("4_6axx2")
+text = "Something Something Depression Idk go play GetItOut "
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=271054609 groups=["KillPlane"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1055262442 groups=["KillPlane"]]
+position = Vector2(-53, 330.5)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1942680633 groups=["KillPlane"]]
+position = Vector2(1198, 334)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2" unique_id=923781010 groups=["KillPlane"]]
+position = Vector2(-8, -3)
+shape = SubResource("WorldBoundaryShape2D_gaj55")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D2" unique_id=1375543914 groups=["KillPlane"]]
+position = Vector2(95, 739)
+shape = SubResource("WorldBoundaryShape2D_pjvta")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1620013006]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=2032778620]
+position = Vector2(371, 370)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1003984368]
+position = Vector2(776, 365)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=934924618]
+position = Vector2(673, 366)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1058643638]
+position = Vector2(504, 370)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1419027199]
+stream = ExtResource("5_5iwy6")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true

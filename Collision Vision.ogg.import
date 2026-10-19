@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b51gfnwby26sj"
+path="res://.godot/imported/Collision Vision.ogg-787dc68cb37a9c76c855d34186b70093.oggvorbisstr"
+
+[deps]
+
+source_file="res://Collision Vision.ogg"
+dest_files=["res://.godot/imported/Collision Vision.ogg-787dc68cb37a9c76c855d34186b70093.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://xy1w8okyckke"]
 
-[ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_2od8i"]
+[ext_resource type="Texture2D" uid="uid://vliasrl6udnp" path="res://Sprite-0007.png" id="1_doisf"]
+[ext_resource type="AudioStream" uid="uid://b51gfnwby26sj" path="res://Collision Vision.ogg" id="2_2od8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8aff"]
-size = Vector2(540, 154.5)
+size = Vector2(770, 155.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gaj55"]
 size = Vector2(54, 731)
@@ -17,16 +18,16 @@ distance = 2.0
 
 [node name="Node2D" type="Node2D" unique_id=1275020512]
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=297827384]
+position = Vector2(576, 324)
+texture = ExtResource("1_doisf")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
 position = Vector2(597, 592)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912179990]
+position = Vector2(0, -0.375)
 shape = SubResource("RectangleShape2D_m8aff")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=882677550]
-position = Vector2(1.9999847, -0.9999914)
-scale = Vector2(4.328125, 1.2500001)
-texture = ExtResource("1_2od8i")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=271054609 groups=["KillPlane"]]
 
@@ -59,3 +60,9 @@ position = Vector2(674, 485)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1058643638]
 position = Vector2(505, 489)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1971497099]
+stream = ExtResource("2_2od8i")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true

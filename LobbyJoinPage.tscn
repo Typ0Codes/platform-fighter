@@ -10,6 +10,36 @@
 [ext_resource type="Script" uid="uid://dqp5w2y8eqrwp" path="res://player_count.gd" id="5_nmbgy"]
 [ext_resource type="Texture2D" uid="uid://c1vpw0ngjes0u" path="res://TestFrog.png" id="6_jsea4"]
 [ext_resource type="Texture2D" uid="uid://btojsxy2axgg7" path="res://Sprite-0002.png" id="8_egjgy"]
+[ext_resource type="PackedScene" uid="uid://bror6jrg0yxh4" path="res://Hallway.tscn" id="8_vyrmj"]
+[ext_resource type="PackedScene" uid="uid://ma4tmuph3jtg" path="res://GetItOutStage.tscn" id="9_j1j7p"]
+[ext_resource type="Texture2D" uid="uid://vliasrl6udnp" path="res://Sprite-0007.png" id="10_no8c3"]
+[ext_resource type="Shader" uid="uid://14o65eqv64x2" path="res://GetItOutStage.gdshader" id="10_uvhbh"]
+[ext_resource type="AudioStream" uid="uid://b5464xxgd0y55" path="res://theplaybuttonisrightthere.ogg" id="15_exhtf"]
+
+[sub_resource type="Gradient" id="Gradient_exhtf"]
+offsets = PackedFloat32Array(0, 0.42944786, 0.74233127, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.33419284, 0.00044135898, 0.4371567, 1, 0.7030473, 0, 0.23065493, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uvhbh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_exhtf"]
+noise = SubResource("FastNoiseLite_uvhbh")
+color_ramp = SubResource("Gradient_exhtf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no8c3"]
+shader = ExtResource("10_uvhbh")
+shader_parameter/screen_height = 640.0
+shader_parameter/amplitude = 0.075
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = true
+shader_parameter/palette = SubResource("NoiseTexture2D_exhtf")
+shader_parameter/palette_speed = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsea4"]
 atlas = ExtResource("6_jsea4")
@@ -23,8 +53,23 @@ region = Rect2(0, 0, 64, 64)
 script = ExtResource("1_nygke")
 characters = Array[PackedScene]([ExtResource("2_mao7f"), ExtResource("3_27xlo"), ExtResource("4_6sp1b"), ExtResource("5_cvx0o")])
 character_names = PackedStringArray("Frog Girl", "Cube Man", "Gun", "Watercooler")
-stages = Array[PackedScene]([ExtResource("3_1rm6c"), ExtResource("5_8venf")])
-stage_names = PackedStringArray("Default", "Flat")
+stages = Array[PackedScene]([ExtResource("3_1rm6c"), ExtResource("5_8venf"), ExtResource("8_vyrmj"), ExtResource("9_j1j7p")])
+stage_names = PackedStringArray("Coastline", "Cityscape", "Judgement", "GetItOut")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1165324644]
+offset_right = 1174.0
+offset_bottom = 678.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1560978312]
+material = SubResource("ShaderMaterial_no8c3")
+position = Vector2(576, 324)
+texture = ExtResource("10_no8c3")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=28587845]
+offset_right = 1174.0
+offset_bottom = 678.0
+color = Color(0, 0, 0, 0.4509804)
 
 [node name="LobbyName" type="TextEdit" parent="." unique_id=74371130]
 offset_left = 267.0
@@ -94,5 +139,11 @@ texture = SubResource("AtlasTexture_jsea4")
 position = Vector2(940, 478)
 scale = Vector2(9.025, 7.427)
 texture = SubResource("AtlasTexture_6sp1b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=796550650]
+stream = ExtResource("15_exhtf")
+volume_db = -15.65
+autoplay = true
+parameters/looping = true
 
 [connection signal="changed" from="PlayerCount" to="PlayerCount" method="_on_changed"]

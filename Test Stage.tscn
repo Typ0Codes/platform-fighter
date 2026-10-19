@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dj1hy5qu3q2el"]
 
+[ext_resource type="AudioStream" uid="uid://b51gfnwby26sj" path="res://Collision Vision.ogg" id="3_brxaa"]
 [ext_resource type="Texture2D" uid="uid://b7cqh622w6tke" path="res://Sprite-0003.png" id="3_fhxd0"]
 [ext_resource type="PackedScene" uid="uid://c7nyxr1fq8r5d" path="res://Platform.tscn" id="3_pjvta"]
 
@@ -19,7 +20,7 @@ distance = 2.0
 [node name="Node2D" type="Node2D" unique_id=1275020512]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1336310083]
-position = Vector2(570, 326)
+position = Vector2(576, 324)
 texture = ExtResource("3_fhxd0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
@@ -81,3 +82,9 @@ position = Vector2(535, 369)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1425406396]
 position = Vector2(526, 526)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1694240780]
+stream = ExtResource("3_brxaa")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true

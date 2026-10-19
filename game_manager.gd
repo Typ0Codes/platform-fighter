@@ -115,6 +115,8 @@ func _on_lobby_joined(_name = null) -> void:
 	lobby_name_input.hide()
 	player_count_input.hide()
 	play_button.hide()
+	
+	$AudioStreamPlayer.stop()
 	if character_select != null:
 		character_select.hide()
 	if stage_select != null:

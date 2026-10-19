@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bror6jrg0yxh4"]
+
+[ext_resource type="Texture2D" uid="uid://bd1djkitju7y7" path="res://Sprite-0008.png" id="1_lc7f0"]
+[ext_resource type="Script" uid="uid://bpxi3tlm5x3mh" path="res://hallway.gd" id="1_yo710"]
+[ext_resource type="AudioStream" uid="uid://b51gfnwby26sj" path="res://Collision Vision.ogg" id="3_mmbvc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo710"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8aff"]
+size = Vector2(1255, 223.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaj55"]
+size = Vector2(54, 731)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gaj55"]
+normal = Vector2(0, 1)
+distance = -16.148737
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pjvta"]
+distance = 2.0
+
+[node name="Node2D" type="Node2D" unique_id=1275020512]
+script = ExtResource("1_yo710")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=297827384]
+material = SubResource("ShaderMaterial_yo710")
+position = Vector2(576, 324)
+texture = ExtResource("1_lc7f0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
+position = Vector2(597, 592)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912179990]
+position = Vector2(-3.5, -34.375)
+shape = SubResource("RectangleShape2D_m8aff")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1754999802]
+position = Vector2(-25, -573)
+shape = SubResource("RectangleShape2D_m8aff")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=271054609 groups=["KillPlane"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1055262442 groups=["KillPlane"]]
+position = Vector2(-53, 330.5)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1942680633 groups=["KillPlane"]]
+position = Vector2(1198, 334)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2" unique_id=923781010 groups=["KillPlane"]]
+position = Vector2(-8, -3)
+shape = SubResource("WorldBoundaryShape2D_gaj55")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D2" unique_id=1375543914 groups=["KillPlane"]]
+position = Vector2(95, 739)
+shape = SubResource("WorldBoundaryShape2D_pjvta")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1620013006]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=2032778620]
+position = Vector2(371, 370)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1003984368]
+position = Vector2(776, 365)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=934924618]
+position = Vector2(673, 366)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1058643638]
+position = Vector2(504, 370)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=226554224]
+stream = ExtResource("3_mmbvc")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
