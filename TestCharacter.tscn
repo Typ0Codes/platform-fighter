@@ -8,6 +8,14 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8aff"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7kfv"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhv7y"]
+atlas = ExtResource("2_roxm0")
+region = Rect2(1408, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qepbq"]
 atlas = ExtResource("2_roxm0")
 region = Rect2(0, 0, 64, 64)
@@ -110,6 +118,17 @@ region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m8aff"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7kfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhv7y")
+}],
+"loop": 0,
+"name": &"DJab",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qepbq")
@@ -248,6 +267,12 @@ height = 53.99936
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rt8y"]
 size = Vector2(23.999716, 21.999744)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0w1vm"]
+radius = 23.345236
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w1vm"]
+size = Vector2(19.999773, 43.994614)
+
 [node name="Player" type="CharacterBody2D" unique_id=497342508]
 script = ExtResource("1_roxm0")
 speed = 300
@@ -260,9 +285,9 @@ one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=234752850]
 sprite_frames = SubResource("SpriteFrames_m8aff")
-animation = &"Recovery"
-frame = 4
-frame_progress = 0.4113629
+animation = &"DJab"
+frame = 1
+frame_progress = 1.0
 script = ExtResource("3_0w1vm")
 metadata/_custom_type_script = "uid://dqpkvnosbpdvd"
 
@@ -347,11 +372,41 @@ one_shot = true
 
 [node name="Label" type="Label" parent="." unique_id=1651260792]
 offset_left = -17.0
-offset_top = -47.0
+offset_top = -63.0
 offset_right = 23.0
+offset_bottom = -40.0
+text = "0%"
+
+[node name="DeathPlaneHitBox" type="Area2D" parent="." unique_id=481336923]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlaneHitBox" unique_id=919636052]
+shape = SubResource("CircleShape2D_0w1vm")
+debug_color = Color(0.3698657, 0.6158413, 1.92523e-07, 0.41960785)
+
+[node name="DJabHitBox" type="Area2D" parent="." unique_id=762601254]
+script = ExtResource("3_p4urp")
+damage = 15.0
+knockback = 40.0
+one_shot = false
+active = false
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DJabHitBox" unique_id=1260348505 groups=["player"]]
+position = Vector2(-1.0000005, 6.9999995)
+rotation = -1.5756879
+scale = Vector2(0.99999934, 0.99999934)
+shape = SubResource("RectangleShape2D_0w1vm")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="Label2" type="Label" parent="." unique_id=595059066]
+offset_left = -18.0
+offset_top = -47.0
+offset_right = 22.0
 offset_bottom = -24.0
-text = "FUCK"
+text = "3/3"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="hurt" from="Hurtbox2D" to="." method="_on_hurtbox_2d_hurt"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="DeathPlaneHitBox" to="." method="_on_death_plane_hit_box_area_entered"]
+[connection signal="body_entered" from="DeathPlaneHitBox" to="." method="_on_death_plane_hit_box_body_entered"]

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://k8hv3pcybxhq"]
+
+[ext_resource type="Script" uid="uid://b3b8q4spqkmka" path="res://in_memorium.gd" id="1_qrwup"]
+[ext_resource type="Texture2D" uid="uid://dtb0e2k8h4r2a" path="res://In Memorium.jpg" id="1_v1res"]
+[ext_resource type="Texture2D" uid="uid://c1vpw0ngjes0u" path="res://TestFrog.png" id="2_21kx3"]
+[ext_resource type="Shader" uid="uid://d3w31jq3e4hcd" path="res://InMemorium.gdshader" id="2_vfujj"]
+[ext_resource type="Script" uid="uid://b3g0uccaw3s" path="res://button_2.gd" id="5_v7quj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrwup"]
+shader = ExtResource("2_vfujj")
+shader_parameter/weighted = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8aff"]
+atlas = ExtResource("2_21kx3")
+region = Rect2(0, 0, 64, 0)
+
+[node name="Node2D" type="Node2D" unique_id=1269586996]
+script = ExtResource("1_qrwup")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=645877027]
+position = Vector2(610, 337.5)
+scale = Vector2(1.7934133, 1.8262033)
+texture = ExtResource("1_v1res")
+
+[node name="Label" type="Label" parent="." unique_id=1987478468]
+offset_left = 202.0
+offset_top = 415.0
+offset_right = 718.0
+offset_bottom = 484.0
+theme_override_font_sizes/font_size = 50
+text = "Frog Man (2026-2026)"
+
+[node name="DEAD" type="Sprite2D" parent="." unique_id=594689324]
+material = SubResource("ShaderMaterial_qrwup")
+position = Vector2(451.99997, 154.00002)
+scale = Vector2(6.03125, 4.5)
+texture = SubResource("AtlasTexture_m8aff")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1846740671]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 373.0
+offset_top = 523.0
+offset_right = 561.0
+offset_bottom = 554.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="PlayAgainButton" type="Button" parent="GridContainer" unique_id=1860725725]
+layout_mode = 2
+focus_neighbor_right = NodePath("../Button2")
+focus_next = NodePath("../Button2")
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="GridContainer" unique_id=1927187132]
+layout_mode = 2
+focus_neighbor_left = NodePath("../PlayAgainButton")
+focus_previous = NodePath("../PlayAgainButton")
+text = "Main Menu"
+script = ExtResource("5_v7quj")
+
+[connection signal="pressed" from="GridContainer/Button2" to="GridContainer/Button2" method="_on_pressed"]

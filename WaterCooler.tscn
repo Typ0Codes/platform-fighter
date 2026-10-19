@@ -1,0 +1,298 @@
+[gd_scene format=3 uid="uid://cvgwuthhuxuye"]
+
+[ext_resource type="Script" uid="uid://bwyy6lsrkbtfp" path="res://water_cooler.gd" id="1_cfpff"]
+[ext_resource type="PackedScene" uid="uid://bvejiuuy1kbu3" path="res://WaterBullet.tscn" id="2_gyk5w"]
+[ext_resource type="Texture2D" uid="uid://uid1dl55alab" path="res://Sprite-0006.png" id="3_gyk5w"]
+[ext_resource type="Script" uid="uid://dqpkvnosbpdvd" path="res://addons/GD-Sync/Scripts/Types/SynchronizedAnimatedSprite2D.gd" id="4_hdkiv"]
+[ext_resource type="Script" uid="uid://c6rhe5cx8xr1c" path="res://addons/saltmire_hitbox/hitbox.gd" id="5_yq35s"]
+[ext_resource type="Script" uid="uid://5pnrbdr5b12f" path="res://addons/saltmire_hitbox/hurtbox.gd" id="6_5nt4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrajt"]
+size = Vector2(21, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3d72"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnvq3"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmfwa"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn1mv"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnku"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvows"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfsx7"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpfpo"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfpff"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ed23"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq35s"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nt4j"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71ck"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyk5w"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv2fi"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhae3"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdkiv"]
+atlas = ExtResource("3_gyk5w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8aff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3d72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnvq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmfwa")
+}],
+"loop": 0,
+"name": &"DJab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn1mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvows")
+}],
+"loop": 0,
+"name": &"DownSpecial",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfsx7")
+}],
+"loop": 0,
+"name": &"ImFalling!",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpfpo")
+}],
+"loop": 0,
+"name": &"Jarona!",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfpff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ed23")
+}],
+"loop": 0,
+"name": &"Leak",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq35s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nt4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71ck")
+}],
+"loop": 0,
+"name": &"Recovery",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyk5w")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv2fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhae3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdkiv")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rt8y"]
+radius = 7.0
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_excte"]
+size = Vector2(34.989815, 9.014572)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubb4t"]
+size = Vector2(32.975174, 13.024315)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8aff"]
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0w1vm"]
+radius = 23.345236
+
+[node name="Player" type="CharacterBody2D" unique_id=497342508 groups=["player"]]
+script = ExtResource("1_cfpff")
+speed = 10
+projectile_scene = ExtResource("2_gyk5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1834859636]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_yrajt")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1392182720]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=234752850]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_m8aff")
+animation = &"Leak"
+script = ExtResource("4_hdkiv")
+metadata/_custom_type_script = "uid://dqpkvnosbpdvd"
+
+[node name="RecoveryHitbox" type="Area2D" parent="." unique_id=1221265785]
+script = ExtResource("5_yq35s")
+damage = 10.0
+knockback = 50.0
+one_shot = false
+active = false
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecoveryHitbox" unique_id=1697481102]
+position = Vector2(1, 13)
+shape = SubResource("CapsuleShape2D_1rt8y")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="DSpecialHitBox" type="Area2D" parent="." unique_id=13335219]
+script = ExtResource("5_yq35s")
+damage = 10.0
+knockback = 50.0
+one_shot = false
+active = false
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DSpecialHitBox" unique_id=916135810]
+position = Vector2(27.441319, 0.5027318)
+rotation = -1.5756879
+scale = Vector2(0.99999946, 0.99999946)
+shape = SubResource("RectangleShape2D_excte")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DSpecialHitBox" unique_id=1935551009]
+position = Vector2(-24.000008, 3.0000002)
+rotation = -1.5756879
+scale = Vector2(0.99999946, 0.99999946)
+shape = SubResource("RectangleShape2D_excte")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="DJabHitBox" type="Area2D" parent="." unique_id=495953075]
+script = ExtResource("5_yq35s")
+damage = 15.0
+knockback = 40.0
+one_shot = false
+active = false
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DJabHitBox" unique_id=1794059905]
+position = Vector2(17.455978, -0.4997859)
+rotation = -1.5756879
+scale = Vector2(0.9999991, 0.9999991)
+shape = SubResource("RectangleShape2D_ubb4t")
+debug_color = Color(0.98587173, 0.11863247, 0, 0.41960785)
+
+[node name="Hurtbox2D" type="Area2D" parent="." unique_id=1674466666]
+script = ExtResource("6_5nt4j")
+metadata/_custom_type_script = "uid://5pnrbdr5b12f"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D" unique_id=979294791]
+shape = SubResource("CapsuleShape2D_m8aff")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1521358348]
+wait_time = 0.25
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=1651260792]
+offset_left = -17.0
+offset_top = -65.0
+offset_right = 24.0
+offset_bottom = -42.0
+text = "FUCK"
+
+[node name="DeathPlaneHitBox" type="Area2D" parent="." unique_id=481336923]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlaneHitBox" unique_id=919636052]
+shape = SubResource("CircleShape2D_0w1vm")
+debug_color = Color(0.3698657, 0.6158413, 1.92523e-07, 0.41960785)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1995916276]
+position = Vector2(18, -6)
+
+[node name="Label2" type="Label" parent="." unique_id=182963926]
+offset_left = -18.0
+offset_top = -53.0
+offset_right = 22.0
+offset_bottom = -30.0
+text = "3/3"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="hurt" from="Hurtbox2D" to="." method="_on_hurtbox_2d_hurt"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="DeathPlaneHitBox" to="." method="_on_death_plane_hit_box_area_entered"]
+[connection signal="body_entered" from="DeathPlaneHitBox" to="." method="_on_death_plane_hit_box_body_entered"]

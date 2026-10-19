@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dke7l6rkxvwjf"]
+
+[ext_resource type="Script" uid="uid://5fj2oiqq4jva" path="res://gun_bullet.gd" id="1_j3tu0"]
+[ext_resource type="Texture2D" uid="uid://dmrc0jtxj1kxu" path="res://Bullets.png" id="2_j3tu0"]
+[ext_resource type="Script" uid="uid://c6rhe5cx8xr1c" path="res://addons/saltmire_hitbox/hitbox.gd" id="2_ws8mm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfpff"]
+atlas = ExtResource("2_j3tu0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8aff"]
+radius = 14.142136
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1346456393]
+gravity_scale = 0.0
+script = ExtResource("1_j3tu0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=672646061]
+position = Vector2(0.5, -7.1525574e-07)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_cfpff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2058243241]
+shape = SubResource("CircleShape2D_m8aff")
+
+[node name="Hitbox2D" type="Area2D" parent="." unique_id=1336626850]
+script = ExtResource("2_ws8mm")
+damage = 10.0
+knockback = 10.0
+metadata/_custom_type_script = "uid://c6rhe5cx8xr1c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D" unique_id=1654839354]
+shape = SubResource("CircleShape2D_m8aff")

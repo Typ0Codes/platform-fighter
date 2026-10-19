@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bcx4nko352vfo"]
+
+[ext_resource type="Script" uid="uid://uysaxw0vaqqf" path="res://game_manager.gd" id="1_nygke"]
+[ext_resource type="PackedScene" uid="uid://bkhbl3swayk6r" path="res://TestCharacter.tscn" id="2_mao7f"]
+[ext_resource type="PackedScene" uid="uid://dj1hy5qu3q2el" path="res://Test Stage.tscn" id="3_1rm6c"]
+[ext_resource type="PackedScene" uid="uid://md3epf8h4o63" path="res://TestCharacter2.tscn" id="3_27xlo"]
+[ext_resource type="PackedScene" uid="uid://5bqcwtjtr4fk" path="res://GunChar.tscn" id="4_6sp1b"]
+[ext_resource type="PackedScene" uid="uid://xy1w8okyckke" path="res://Test Stage2.tscn" id="5_8venf"]
+[ext_resource type="PackedScene" uid="uid://cvgwuthhuxuye" path="res://WaterCooler.tscn" id="5_cvx0o"]
+[ext_resource type="Script" uid="uid://dqp5w2y8eqrwp" path="res://player_count.gd" id="5_nmbgy"]
+[ext_resource type="Texture2D" uid="uid://c1vpw0ngjes0u" path="res://TestFrog.png" id="6_jsea4"]
+[ext_resource type="Texture2D" uid="uid://btojsxy2axgg7" path="res://Sprite-0002.png" id="8_egjgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsea4"]
+atlas = ExtResource("6_jsea4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sp1b"]
+atlas = ExtResource("8_egjgy")
+region = Rect2(0, 0, 64, 64)
+
+[node name="Node2D" type="Node2D" unique_id=2103521679]
+script = ExtResource("1_nygke")
+characters = Array[PackedScene]([ExtResource("2_mao7f"), ExtResource("3_27xlo"), ExtResource("4_6sp1b"), ExtResource("5_cvx0o")])
+character_names = PackedStringArray("Frog Girl", "Cube Man", "Gun", "Watercooler")
+stages = Array[PackedScene]([ExtResource("3_1rm6c"), ExtResource("5_8venf")])
+stage_names = PackedStringArray("Default", "Flat")
+
+[node name="LobbyName" type="TextEdit" parent="." unique_id=74371130]
+offset_left = 267.0
+offset_top = 114.0
+offset_right = 456.0
+offset_bottom = 169.0
+placeholder_text = "Lobby Name"
+
+[node name="PlayerCount" type="HSlider" parent="." unique_id=879118160]
+offset_left = 266.0
+offset_top = 202.0
+offset_right = 434.0
+offset_bottom = 218.0
+min_value = 2.0
+max_value = 10.0
+value = 2.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+ticks_position = 3
+script = ExtResource("5_nmbgy")
+
+[node name="Label" type="Label" parent="PlayerCount" unique_id=494299059]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -27.0
+offset_right = 101.0
+offset_bottom = -4.0
+text = "Player Count"
+
+[node name="PlayButton" type="Button" parent="." unique_id=912665938]
+offset_left = 520.0
+offset_top = 235.0
+offset_right = 597.0
+offset_bottom = 273.0
+text = "Play"
+
+[node name="CharacterSelect" type="OptionButton" parent="." unique_id=760306672]
+offset_left = 480.0
+offset_top = 115.0
+offset_right = 638.0
+offset_bottom = 158.0
+item_count = 1
+popup/item_0/id = 0
+
+[node name="StageSelect" type="OptionButton" parent="." unique_id=1212293086]
+offset_left = 661.0
+offset_top = 115.0
+offset_right = 819.0
+offset_bottom = 158.0
+item_count = 1
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="." unique_id=1746964830]
+offset_left = 237.0
+offset_right = 887.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 50
+text = "Terra Platform Fighter Test"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=604005898]
+position = Vector2(233, 457)
+scale = Vector2(9, 7.40625)
+texture = SubResource("AtlasTexture_jsea4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=604185020]
+position = Vector2(940, 478)
+scale = Vector2(9.025, 7.427)
+texture = SubResource("AtlasTexture_6sp1b")
+
+[connection signal="changed" from="PlayerCount" to="PlayerCount" method="_on_changed"]

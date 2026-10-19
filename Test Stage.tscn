@@ -1,57 +1,83 @@
 [gd_scene format=3 uid="uid://dj1hy5qu3q2el"]
 
-[ext_resource type="Script" uid="uid://uysaxw0vaqqf" path="res://game_manager.gd" id="1_fhxd0"]
-[ext_resource type="Texture2D" uid="uid://hkr8yypljcqs" path="res://icon.svg" id="1_l365q"]
-[ext_resource type="PackedScene" uid="uid://bkhbl3swayk6r" path="res://TestCharacter.tscn" id="2_gaj55"]
+[ext_resource type="Texture2D" uid="uid://b7cqh622w6tke" path="res://Sprite-0003.png" id="3_fhxd0"]
 [ext_resource type="PackedScene" uid="uid://c7nyxr1fq8r5d" path="res://Platform.tscn" id="3_pjvta"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8aff"]
-size = Vector2(540, 154.5)
+size = Vector2(655, 127.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaj55"]
+size = Vector2(54, 731)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gaj55"]
+normal = Vector2(0, 1)
+distance = -16.148737
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pjvta"]
+distance = 2.0
 
 [node name="Node2D" type="Node2D" unique_id=1275020512]
-script = ExtResource("1_fhxd0")
-player_scene = ExtResource("2_gaj55")
-max_players = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1336310083]
+position = Vector2(570, 326)
+texture = ExtResource("3_fhxd0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=954284993]
 position = Vector2(597, 592)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912179990]
+position = Vector2(-46.5, 13.625)
 shape = SubResource("RectangleShape2D_m8aff")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=882677550]
-position = Vector2(1.9999847, -0.9999914)
-scale = Vector2(4.328125, 1.2500001)
-texture = ExtResource("1_l365q")
-
 [node name="Platform" parent="." unique_id=1496373755 instance=ExtResource("3_pjvta")]
-position = Vector2(384, 461)
+position = Vector2(274, 470)
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=962525953]
-position = Vector2(32.5, 0)
-scale = Vector2(0.5078125, 0.0390625)
-texture = ExtResource("1_l365q")
+[node name="Platform7" parent="." unique_id=1139037172 instance=ExtResource("3_pjvta")]
+position = Vector2(223, 469)
+
+[node name="Platform5" parent="." unique_id=609085811 instance=ExtResource("3_pjvta")]
+position = Vector2(322, 470)
 
 [node name="Platform2" parent="." unique_id=2131709149 instance=ExtResource("3_pjvta")]
-position = Vector2(554, 390)
+position = Vector2(475, 393)
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform2" unique_id=1479233558]
-position = Vector2(33, 1)
-scale = Vector2(0.5078125, 0.0390625)
-texture = ExtResource("1_l365q")
+[node name="Platform6" parent="." unique_id=1957577390 instance=ExtResource("3_pjvta")]
+position = Vector2(543, 393)
 
 [node name="Platform3" parent="." unique_id=294676754 instance=ExtResource("3_pjvta")]
-position = Vector2(721, 461)
+position = Vector2(640, 477)
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform3" unique_id=85203220]
-position = Vector2(32.5, 0)
-scale = Vector2(0.5078125, 0.0390625)
-texture = ExtResource("1_l365q")
+[node name="Platform4" parent="." unique_id=949043898 instance=ExtResource("3_pjvta")]
+position = Vector2(705, 477)
 
-[node name="Label" type="Label" parent="." unique_id=1295053921]
-offset_left = 266.0
-offset_top = 164.0
-offset_right = 916.0
-offset_bottom = 233.0
-theme_override_font_sizes/font_size = 50
-text = "Terra Platform Fighter Test"
+[node name="Area2D2" type="Area2D" parent="." unique_id=271054609 groups=["KillPlane"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1055262442 groups=["KillPlane"]]
+position = Vector2(-53, 330.5)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1942680633 groups=["KillPlane"]]
+position = Vector2(1198, 334)
+shape = SubResource("RectangleShape2D_gaj55")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D2" unique_id=923781010 groups=["KillPlane"]]
+position = Vector2(-8, -3)
+shape = SubResource("WorldBoundaryShape2D_gaj55")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D2" unique_id=1375543914 groups=["KillPlane"]]
+position = Vector2(95, 739)
+shape = SubResource("WorldBoundaryShape2D_pjvta")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=364657790]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1651395460]
+position = Vector2(327, 446)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=148784387]
+position = Vector2(703, 454)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=1309213796]
+position = Vector2(535, 369)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1425406396]
+position = Vector2(526, 526)
